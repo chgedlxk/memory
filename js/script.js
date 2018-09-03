@@ -94,9 +94,19 @@ gameGrid.forEach(item => {
 	card.setAttribute('class', 'card');
 	card.dataset.name = item.name;
 
+	// Create front of card
+	const front = document.createElement('div');
+	front.classList.add('front');	
+
+	// create back of card, which contains
+	const back = document.createElement('div');
+	back.classList.add('back');	
+	back.style.backgroundImage = `url(${item.img})`;
 	
-	card.style.backgroundImage = `url(${item.img})`;
+	// Append card to grid, and font and back to each card	
 	grid.appendChild(card);
+	card.appendChild(front);
+	card.appendChild(back);
 })
 
 let count = 0;
@@ -115,15 +125,17 @@ const match = () => {
 
 grid.addEventListener('click', function(event) {
 	let clicked = event.target;
-	if (clicked.nodeName === 'SECTION' || clicked == previousTarget) { return; }
+	if (clicked.nodeName === 'SECTION' ||
+	    clicked == previousTarget ||
+	    clicked.parentNode.classList.contains('selected')) { return; }
 	if (count < 2) {
 		count++;
 		if (count === 1) {
-			firstGuess = clicked.dataset.name;
-			clicked.classList.add('selected');
+			firstGuess = clicked.parentNode.dataset.name;
+			clicked.parentNode.classList.add('selected');
 		} else {
-			secondGuess = clicked.dataset.name;
-			clicked.classList.add('selected');
+			secondGuess = clicked.parentNode.dataset.name;
+			clicked.parentNode.classList.add('selected');
 		}
 
 		if (firstGuess !== '' && secondGuess !== '') {
