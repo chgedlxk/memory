@@ -76,12 +76,19 @@ game.appendChild(grid);
 
 let gameGrid = cardsArray.concat(cardsArray);
 
-gameGrid.forEach(function(item) {
+// gameGrid.forEach(function(item) {
+// 	const card = document.createElement('div');
+// 	card.setAttribute('class', 'card');
+// 	card.dataset.name = item.name;
+// 	card.style.backgroundImage = `url(${item.img})`;
+// 	grid.appendChild(card);
+// });
+
+gameGrid.forEach(item => {
+	
 	const card = document.createElement('div');
 	card.setAttribute('class', 'card');
 	card.dataset.name = item.name;
 	card.style.backgroundImage = `url(${item.img})`;
 	grid.appendChild(card);
-});
-
-
+})
