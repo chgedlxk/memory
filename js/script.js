@@ -97,9 +97,13 @@ gameGrid.forEach(item => {
 	grid.appendChild(card);
 })
 
+let count = 0;
 grid.addEventListener('click', function(event) {
-	let clicked = event.target;
 
+	let clicked = event.target;
 	if (clicked.nodeName === 'SECTION') { return; }
-	clicked.classList.add('selected');
+	if (count < 2) {
+		count++;
+		clicked.classList.add('selected');
+	}
 });
