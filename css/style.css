@@ -9,6 +9,13 @@ body {
 	background: #6589F9;	
 }
 
+.grid {
+	max-width: 960px;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
 
 .card {
 	margin: 5px;
@@ -17,5 +24,5 @@ body {
 	background-repeat: no-repeat;
 	background-position: center center;
 	height: 150px;
-	height: 150px;
+	width: 150px;
 }

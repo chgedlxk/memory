@@ -57,10 +57,27 @@ const cardsArray = [
 	},	
 
 	{
-		'name': 'boomba',
-		'img': 'img/boomba.png',
+		'name': 'goomba',
+		'img': 'img/goomba.png',
 	},	
 ];
 
+// Get the div with id of game
 const game = document.getElementById('game');
+
+// Create a section with a class of grid
+const grid = document.createElement('section');
+grid.setAttribute('class', 'grid');
+
+// append the grid section to the game div
+game.appendChild(grid);
+
+
+cardsArray.forEach(function(item) {
+	const card = document.createElement('div');
+	card.setAttribute('class', 'card');
+	card.dataset.name = item.name;
+	card.style.backgroundImage = `url(${item.img})`;
+	grid.appendChild(card);
+});
 
