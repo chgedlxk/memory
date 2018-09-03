@@ -76,6 +76,11 @@ game.appendChild(grid);
 
 let gameGrid = cardsArray.concat(cardsArray);
 
+
+// Randomize game grind on each load
+gameGrid.sort(function() {
+	return 0.5 - Math.random();
+});
 // gameGrid.forEach(function(item) {
 // 	const card = document.createElement('div');
 // 	card.setAttribute('class', 'card');
@@ -85,10 +90,16 @@ let gameGrid = cardsArray.concat(cardsArray);
 // });
 
 gameGrid.forEach(item => {
-	
 	const card = document.createElement('div');
 	card.setAttribute('class', 'card');
 	card.dataset.name = item.name;
 	card.style.backgroundImage = `url(${item.img})`;
 	grid.appendChild(card);
 })
+
+grid.addEventListener('click', function(event) {
+	let clicked = event.target;
+
+	if (clicked.nodeName === 'SECTION') { return; }
+	clicked.classList.add('selected');
+});
